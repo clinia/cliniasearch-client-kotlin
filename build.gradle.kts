@@ -20,6 +20,8 @@ plugins {
     id("com.github.kukuhyoniatmoko.buildconfigkotlin") version "1.0.5"
 }
 
+apply(plugin = "com.android.library")
+
 repositories {
     jcenter()
     google()
@@ -37,6 +39,35 @@ buildConfigKotlin {
     }
 }
 
+extensions.getByType(LibraryExtension::class.java).apply {
+    compileSdkVersion(28)
+
+    defaultConfig {
+        minSdkVersion(17)
+        targetSdkVersion(28)
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    testOptions.unitTests.isIncludeAndroidResources = true
+
+    sourceSets {
+        getByName("main") {
+            manifest.srcFile("src/androidMain/AndroidManifest.xml")
+            java.srcDirs("src/androidMain/kotlin")
+            res.srcDirs("src/androidMain/res")
+        }
+        getByName("test") {
+            java.srcDirs("src/androidTest/kotlin")
+            res.srcDirs("src/androidTest/res")
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+}
+
 kotlin {
     /* Targets configuration omitted. 
     *  To find out how to configure the targets, please follow the link:
@@ -48,7 +79,17 @@ kotlin {
             }
         }
     }
-
+    android {
+        mavenPublication {
+            artifactId = "${Library.artifact}-android"
+        }
+        publishLibraryVariants("release")
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = "1.8"
+            }
+        }
+    }
     sourceSets {
         all {
             languageSettings.progressiveMode = true
