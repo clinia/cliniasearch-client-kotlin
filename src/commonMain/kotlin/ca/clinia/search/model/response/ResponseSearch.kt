@@ -16,27 +16,27 @@ public data class ResponseSearch(
      * The hits returned by the search. Hits are ordered according to the ranking or sorting of the index being queried.
      * Hits are made of the schemaless JSON objects that you stored in the index.
      */
-    @SerialName(KeyHits) val hitsOrNull: List<Record>? = null,
+    @SerialName(KeyRecords) val recordsOrNull: List<Record>? = null,
     /**
      * The number of hits matched by the query.
      */
-    @SerialName(KeyNbHits) val nbHitsOrNull: Int? = null,
+    @SerialName(KeyTotal) val totalOrNull: Int? = null,
     /**
      * Index of the current page (zero-based). See the [Query.page] search parameter.
      * Not returned if you use offset/length for pagination.
      */
     @SerialName(KeyPage) val pageOrNull: Int? = null,
     /**
-     * The maximum number of hits returned per page. See the [Query.hitsPerPage] search parameter.
+     * The maximum number of hits returned per page. See the [Query.PerPage] search parameter.
      * Not returned if you use offset & length for pagination.
      */
-    @SerialName(KeyHitsPerPage) val hitsPerPageOrNull: Int? = null,
+    @SerialName(KeyPerPage) val perPageOrNull: Int? = null,
     /**
      * The number of returned pages. Calculation is based on the total number of hits (nbHits) divided by the number of
      * hits per page (hitsPerPage), rounded up to the nearest integer.
      * Not returned if you use offset & length for pagination.
      */
-    @SerialName(KeyNbPages) val nbPagesOrNull: Int? = null,
+    @SerialName(KeyNumPages) val numPagesOrNull: Int? = null,
     /**
      * An echo of the query text. See the [Query.query] search parameter.
      */
@@ -60,19 +60,19 @@ public data class ResponseSearch(
     ) {
 
     public val records: List<Record>
-        get() = hitsOrNull!!
+        get() = recordsOrNull!!
 
-    public val nbHits: Int
-        get() = nbHitsOrNull!!
+    public val total: Int
+        get() = totalOrNull!!
 
     public val page: Int
         get() = pageOrNull!!
 
-    public val hitsPerPage: Int
-        get() = hitsPerPageOrNull!!
+    public val perPage: Int
+        get() = perPageOrNull!!
 
-    public val nbPages: Int
-        get() = nbPagesOrNull!!
+    public val numPages: Int
+        get() = numPagesOrNull!!
 
     public val query: String
         get() = queryOrNull!!

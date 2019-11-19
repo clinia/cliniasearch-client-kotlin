@@ -4,8 +4,10 @@ import ca.clinia.search.configuration.*
 import io.ktor.client.features.ResponseException
 import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.request
+import io.ktor.http.ContentType
 import io.ktor.http.HttpMethod
 import io.ktor.http.URLProtocol
+import io.ktor.http.content.TextContent
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -47,6 +49,7 @@ internal class Transport(
             url.protocol = URLProtocol.HTTPS
             method = httpMethod
             compress(body)
+            setContentType(body, httpMethod)
             credentialsOrNull?.let {
                 setApplicationId(it.applicationID)
                 setApiKey(it.apiKey)
@@ -61,6 +64,16 @@ internal class Transport(
                 Compression.Gzip -> Gzip(payload)
                 Compression.None -> payload
             }
+        }
+    }
+
+    private fun HttpRequestBuilder.setContentType(payload: String?, httpMethod: HttpMethod) {
+        if (payload == null) {
+            return
+        }
+
+        if (httpMethod == HttpMethod.Post) {
+            body = TextContent(payload, ContentType.Application.FormUrlEncoded)
         }
     }
 

@@ -24,7 +24,7 @@ public data class Query(
      * Set the number of hits per page.
      * Engine default: 20
      */
-    @SerialName(KeyHitsPerPage) var hitsPerPage: Int? = null,
+    @SerialName(KeyPerPage) var hitsPerPage: Int? = null,
 
     /**
      * Search for entries around a central geolocation, enabling a geo search within a circular area.

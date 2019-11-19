@@ -22,7 +22,7 @@ internal class TestMockEngine {
 
     private val apiKey = "apiKey".toAPIKey()
     private val appID = "appID".toApplicationID()
-    private val responseSearch = ResponseSearch(hitsOrNull = listOf())
+    private val responseSearch = ResponseSearch(recordsOrNull = listOf())
     private val engine = MockEngine {
         respond(
             status = HttpStatusCode.OK,
