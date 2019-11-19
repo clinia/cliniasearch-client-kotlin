@@ -131,6 +131,26 @@ kotlin {
                 implementation(Ktor("client-android"))
             }
         }
+        val androidMain by getting {
+            dependencies {
+                api(kotlin("stdlib-jdk8"))
+                api(Ktor("client-core-jvm"))
+                api(Ktor("client-json-jvm"))
+                api(Ktor("client-logging-jvm"))
+                api(Ktor("client-serialization-jvm"))
+            }
+        }
+        val androidTest by getting {
+            dependencies {
+                implementation(kotlin("test"))
+                implementation(kotlin("test-junit"))
+                implementation(Ktor("client-mock-jvm"))
+                implementation(Ktor("client-android"))
+                implementation(AndroidTestRunner())
+                implementation(AndroidTestExtRunner())
+                implementation(Robolectric())
+            }
+        }
     }
 }
 
