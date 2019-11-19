@@ -7,8 +7,6 @@ import ca.clinia.search.transport.RequestOptions
 public interface EndpointMultipleIndex {
 
     /**
-     * [Documentation][https://www.algolia.com/doc/api-reference/api-methods/multiple-queries/?language=kotlin]
-     *
      * Perform a search on several indices at the same time, with one method call.
      * The returned results are broken down by [IndexQuery].
      * This method can be used in several different kinds of situations. Here are two typical usage scenarios:

@@ -4,7 +4,7 @@ import ca.clinia.search.exception.EmptyStringException
 
 
 /**
- * Your [ApplicationID] (or App ID) is what Algolia uses to identify your app, where we keep all your indices.
+ * Your [ApplicationID] (or App ID) is what Clinia uses to identify your app, where we keep all your indices.
  * Can't be blank or empty.
  */
 public data class ApplicationID(override val raw: String) : Raw<String> {

@@ -8,18 +8,18 @@ import ca.clinia.search.model.Time
 
 internal val ApplicationID.searchHosts
     get() = listOf(
-        RetryableHost("$this-dsn.algolia.net", CallType.Read),
-        RetryableHost("$this.algolia.net", CallType.Write),
-        RetryableHost("$this-1.algolianet.com"),
-        RetryableHost("$this-2.algolianet.com"),
-        RetryableHost("$this-3.algolianet.com")
+        RetryableHost("$this-dsn.clinia.net", CallType.Read),
+        RetryableHost("$this.clinia.net", CallType.Write),
+        RetryableHost("$this-1.clinianet.com"),
+        RetryableHost("$this-2.clinianet.com"),
+        RetryableHost("$this-3.clinianet.com")
     )
 
 internal val placesHosts = listOf(
-    RetryableHost("places-dsn.algolia.net"),
-    RetryableHost("places-1.algolianet.com"),
-    RetryableHost("places-2.algolianet.com"),
-    RetryableHost("places-3.algolianet.com")
+    RetryableHost("places-dsn.clinia.net"),
+    RetryableHost("places-1.clinianet.com"),
+    RetryableHost("places-2.clinianet.com"),
+    RetryableHost("places-3.clinianet.com")
 )
 
 internal fun RetryableHost.reset() {
