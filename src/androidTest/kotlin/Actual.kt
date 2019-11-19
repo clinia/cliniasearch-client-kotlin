@@ -11,23 +11,23 @@ import kotlin.coroutines.CoroutineContext
 
 
 internal actual val clientSearch = ClientSearch(
-    System.getenv("ALGOLIA_APPLICATION_ID_1")!!.toApplicationID(),
-    System.getenv("ALGOLIA_SEARCH_KEY_1")!!.toAPIKey()
+    System.getenv("CLINIA_APPLICATION_ID_1")!!.toApplicationID(),
+    System.getenv("CLINIA_SEARCH_KEY_1")!!.toAPIKey()
 )
 internal actual val clientAdmin1 = ClientSearch(
-    System.getenv("ALGOLIA_APPLICATION_ID_1")!!.toApplicationID(),
-    System.getenv("ALGOLIA_ADMIN_KEY_1")!!.toAPIKey()
+    System.getenv("CLINIA_APPLICATION_ID_1")!!.toApplicationID(),
+    System.getenv("CLINIA_ADMIN_KEY_1")!!.toAPIKey()
 )
 internal actual val clientAdmin2 = ClientSearch(
     ConfigurationSearch(
-        System.getenv("ALGOLIA_APPLICATION_ID_2")!!.toApplicationID(),
-        System.getenv("ALGOLIA_ADMIN_KEY_2")!!.toAPIKey(),
+        System.getenv("CLINIA_APPLICATION_ID_2")!!.toApplicationID(),
+        System.getenv("CLINIA_ADMIN_KEY_2")!!.toAPIKey(),
         compression = Compression.None
     )
 )
 internal actual val clientMcm = ClientSearch(
-    System.getenv("ALGOLIA_ADMIN_ID_MCM")!!.toApplicationID(),
-    System.getenv("ALGOLIA_ADMIN_KEY_MCM")!!.toAPIKey()
+    System.getenv("CLINIA_ADMIN_ID_MCM")!!.toApplicationID(),
+    System.getenv("CLINIA_ADMIN_KEY_MCM")!!.toAPIKey()
 )
 
 internal actual val username: String
