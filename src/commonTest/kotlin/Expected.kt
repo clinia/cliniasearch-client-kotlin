@@ -1,9 +1,11 @@
+import ca.clinia.search.client.ClientPlaces
 import ca.clinia.search.client.ClientSearch
 import kotlinx.coroutines.CoroutineScope
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
 
 internal expect val clientSearch: ClientSearch
+internal expect val clientPlaces: ClientPlaces
 internal expect val clientAdmin1: ClientSearch
 
 internal expect fun runBlocking(

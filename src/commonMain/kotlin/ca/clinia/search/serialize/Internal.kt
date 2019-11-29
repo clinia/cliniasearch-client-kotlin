@@ -3,6 +3,7 @@
 package ca.clinia.search.serialize
 
 import ca.clinia.search.model.multipleindex.IndexQuery
+import ca.clinia.search.model.places.PlacesQuery
 import ca.clinia.search.model.request.RequestMultipleQueries
 import ca.clinia.search.model.search.Query
 import io.ktor.http.Parameters
@@ -57,4 +58,8 @@ internal fun List<IndexQuery>.toBody(): String {
 
 internal fun Query.toBody(): String {
     return JsonNoDefaults.stringify(Query.serializer(), this)
+}
+
+internal fun PlacesQuery.toBody(): String {
+    return JsonNoDefaults.stringify(PlacesQuery.serializer(), this)
 }

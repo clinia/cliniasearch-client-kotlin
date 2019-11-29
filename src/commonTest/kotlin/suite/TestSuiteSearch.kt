@@ -1,15 +1,15 @@
 package suite
 
-import ca.clinia.search.dsl.query
-import ca.clinia.search.helper.and
 import ca.clinia.search.model.IndexName
 import ca.clinia.search.model.multipleindex.IndexQuery
-import ca.clinia.search.model.search.BoundingBox
+import ca.clinia.search.model.places.PlaceType
+import ca.clinia.search.model.places.PlacesQuery
 import ca.clinia.search.model.search.Query
+import clientPlaces
 import clientSearch
 import io.ktor.client.features.ResponseException
 import io.ktor.client.response.readText
-import io.ktor.http.content.TextContent
+import io.ktor.content.TextContent
 import runBlocking
 import shouldEqual
 import kotlin.test.Test
@@ -21,6 +21,7 @@ internal class TestSuiteSearch {
     private val indexName = IndexName("health_facility")
 
     private val search = clientSearch.initIndex(indexName)
+    private val places = clientPlaces
 
     @Test
     fun singleIndex() {
@@ -29,7 +30,7 @@ internal class TestSuiteSearch {
                 try {
                     val responseSearch = search(Query(query = ""))
 
-                    responseSearch.meta.perPage shouldEqual 65
+                    responseSearch.meta.perPage shouldEqual 20
                     responseSearch.records.first()
                 } catch (exception: ResponseException) {
                     val request = exception.response.call.request
@@ -40,8 +41,6 @@ internal class TestSuiteSearch {
                     println(content)
                 }
             }
-
-
         }
     }
 
@@ -56,6 +55,14 @@ internal class TestSuiteSearch {
             )
 
             response.results.size shouldEqual 2
+        }
+    }
+
+    @Test
+    fun places() {
+        runBlocking {
+            val response = places.searchPlaces(PlacesQuery("Lon", listOf(PlaceType.Place), listOf("CA"), 1))
+            response.suggestions.size shouldEqual 1
         }
     }
 }

@@ -1,5 +1,7 @@
+import ca.clinia.search.client.ClientPlaces
 import ca.clinia.search.client.ClientSearch
 import ca.clinia.search.configuration.Compression
+import ca.clinia.search.configuration.ConfigurationPlaces
 import ca.clinia.search.configuration.ConfigurationSearch
 import ca.clinia.search.configuration.RetryableHost
 import ca.clinia.search.helper.toAPIKey
@@ -15,6 +17,13 @@ internal actual val clientSearch = ClientSearch(
     configuration = ConfigurationSearch(
         applicationID = System.getenv("CLINIA_APPLICATION_ID_1").toApplicationID(),
         apiKey = System.getenv("CLINIA_SEARCH_KEY_1").toAPIKey(),
+        hosts = listOf(RetryableHost(url = "api.partner.staging.clinia.ca"))
+    )
+)
+internal actual val clientPlaces = ClientPlaces(
+    configuration = ConfigurationPlaces(
+        applicationID = System.getenv("CLINIA_APPLICATION_ID_1").toApplicationID(),
+        apiKey = System.getenv("CLINIA_PLACES_KEY_1").toAPIKey(),
         hosts = listOf(RetryableHost(url = "api.partner.staging.clinia.ca"))
     )
 )

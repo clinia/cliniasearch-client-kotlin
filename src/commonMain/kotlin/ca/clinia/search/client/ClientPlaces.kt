@@ -18,13 +18,11 @@ public class ClientPlaces private constructor(
         applicationID: ApplicationID,
         apiKey: APIKey
     ) : this(
-        Transport(ConfigurationPlaces(), CredentialsImpl(applicationID, apiKey))
+        Transport(ConfigurationPlaces(applicationID, apiKey), CredentialsImpl(applicationID, apiKey))
     )
 
     public constructor(
         configuration: ConfigurationPlaces
-    ) : this(Transport(configuration, null))
-
-    public constructor() : this(Transport(ConfigurationPlaces(), null))
+    ) : this(Transport(configuration, configuration))
 }
 
