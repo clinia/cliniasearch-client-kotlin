@@ -5,7 +5,6 @@ import kotlin.coroutines.EmptyCoroutineContext
 
 internal expect val clientSearch: ClientSearch
 internal expect val clientAdmin1: ClientSearch
-internal expect val clientAdmin2: ClientSearch
 
 internal expect fun runBlocking(
     coroutineContext: CoroutineContext = EmptyCoroutineContext,

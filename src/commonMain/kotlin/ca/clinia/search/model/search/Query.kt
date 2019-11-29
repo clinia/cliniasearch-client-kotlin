@@ -12,19 +12,25 @@ public data class Query(
      * The text to search in the index.
      * Engine default: ""
      */
-    @SerialName(KeyQuery) var query: String? = null,
+    @SerialName(KeyQuery) val query: String? = null,
 
     /**
      * Specify the page to retrieve.
      * Engine default: 0
      */
-    @SerialName(KeyPage) var page: Int? = null,
+    @SerialName(KeyPage) val page: Int? = null,
 
     /**
      * Set the number of hits per page.
      * Engine default: 20
      */
-    @SerialName(KeyPerPage) var hitsPerPage: Int? = null,
+    @SerialName(KeyPerPage) val hitsPerPage: Int? = null,
+
+    /**
+     * Set the location for a geo search
+     * Engine default: null
+     */
+    @SerialName(KeyLocation) val location: String? = null,
 
     /**
      * Search for entries around a central geolocation, enabling a geo search within a circular area.
@@ -42,7 +48,7 @@ public data class Query(
      * Search inside a rectangular area (in geo coordinates).
      * Engine default: null
      */
-    @SerialName(KeyInsideBoundingBox) var insideBoundingBox: List<BoundingBox>? = null,
+    @SerialName(KeyInsideBoundingBox) @Serializable(KSerializerBoundingBox::class) var insideBoundingBox: BoundingBox? = null,
 
     /**
      * Controls if and how query words are interpreted as [prefixes]

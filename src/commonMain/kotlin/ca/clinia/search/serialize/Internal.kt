@@ -13,6 +13,7 @@ import kotlinx.serialization.json.*
 
 internal val regexPlaceholder = Regex("^<(.*)>$")
 internal val regexPoint = Regex("^(.*),(.*)$")
+internal val regexBoundingBox = Regex("^(.*),(.*),(.*),(.*)$")
 
 internal fun JsonObject.merge(jsonObject: JsonObject): JsonObject {
     return toMutableMap().run {

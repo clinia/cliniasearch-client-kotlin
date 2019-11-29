@@ -21,13 +21,6 @@ internal actual val clientAdmin1 = ClientSearch(
     System.getenv("CLINIA_APPLICATION_ID_1").toApplicationID(),
     System.getenv("CLINIA_ADMIN_KEY_1").toAPIKey()
 )
-internal actual val clientAdmin2 = ClientSearch(
-    ConfigurationSearch(
-        System.getenv("CLINIA_APPLICATION_ID_2").toApplicationID(),
-        System.getenv("CLINIA_ADMIN_KEY_2").toAPIKey(),
-        compression = Compression.None
-    )
-)
 
 internal actual val username: String
     get() {

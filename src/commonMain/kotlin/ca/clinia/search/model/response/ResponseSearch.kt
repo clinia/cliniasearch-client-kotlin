@@ -17,44 +17,8 @@ public data class ResponseSearch(
      * Hits are made of the schemaless JSON objects that you stored in the index.
      */
     @SerialName(KeyRecords) val recordsOrNull: List<Record>? = null,
-    /**
-     * The number of hits matched by the query.
-     */
-    @SerialName(KeyTotal) val totalOrNull: Int? = null,
-    /**
-     * Index of the current page (zero-based). See the [Query.page] search parameter.
-     * Not returned if you use offset/length for pagination.
-     */
-    @SerialName(KeyPage) val pageOrNull: Int? = null,
-    /**
-     * The maximum number of hits returned per page. See the [Query.PerPage] search parameter.
-     * Not returned if you use offset & length for pagination.
-     */
-    @SerialName(KeyPerPage) val perPageOrNull: Int? = null,
-    /**
-     * The number of returned pages. Calculation is based on the total number of hits (nbHits) divided by the number of
-     * hits per page (hitsPerPage), rounded up to the nearest integer.
-     * Not returned if you use offset & length for pagination.
-     */
-    @SerialName(KeyNumPages) val numPagesOrNull: Int? = null,
-    /**
-     * An echo of the query text. See the [Query.query] search parameter.
-     */
-    @SerialName(KeyQuery) val queryOrNull: String? = null,
-    /**
-     * A url-encoded string of all [Query] parameters.
-     */
-    @SerialName(KeyParams) val paramsOrNull: String? = null,
-    /**
-     * The computed geo location.
-     * Only returned when [Query.aroundLatLngViaIP] or [Query.aroundLatLng] is set.
-     */
-    @SerialName(KeyAroundLatLng) @Serializable(KSerializerPoint::class) val aroundLatLngOrNull: Point? = null,
-    /**
-     * The automatically computed radius. For legacy reasons, this parameter is a string and not an integer.
-     * Only returned for geo queries without an explicitly specified [Query.aroundRadius].
-     */
-    @SerialName(KeyAutomaticRadius) val automaticRadiusOrNull: Float? = null,
+
+    @SerialName(KeyMeta) val metaOrNull: Meta? = null,
 
     @SerialName(KeyIndex) val indexNameOrNull: IndexName? = null
     ) {
@@ -62,29 +26,8 @@ public data class ResponseSearch(
     public val records: List<Record>
         get() = recordsOrNull!!
 
-    public val total: Int
-        get() = totalOrNull!!
-
-    public val page: Int
-        get() = pageOrNull!!
-
-    public val perPage: Int
-        get() = perPageOrNull!!
-
-    public val numPages: Int
-        get() = numPagesOrNull!!
-
-    public val query: String
-        get() = queryOrNull!!
-
-    public val params: String
-        get() = paramsOrNull!!
-
-    public val aroundLatLng: Point
-        get() = aroundLatLngOrNull!!
-
-    public val automaticRadius: Float
-        get() = automaticRadiusOrNull!!
+    public val meta: Meta
+        get() = metaOrNull!!
 
     /**
      * Returns the position (0-based) within the [records] result list of the record matching against the given [recordID].
@@ -92,6 +35,72 @@ public data class ResponseSearch(
      */
     public fun getRecordPosition(recordID: ID): Int {
         return records.indexOfFirst { it.json.getPrimitiveOrNull("id")?.content == recordID.raw }
+    }
+
+    @Serializable
+    public data class Meta(
+        /**
+         * The number of hits matched by the query.
+         */
+        @SerialName(KeyTotal) val totalOrNull: Int? = null,
+        /**
+         * Index of the current page (zero-based). See the [Query.page] search parameter.
+         * Not returned if you use offset/length for pagination.
+         */
+        @SerialName(KeyPage) val pageOrNull: Int? = null,
+        /**
+         * The maximum number of hits returned per page. See the [Query.PerPage] search parameter.
+         * Not returned if you use offset & length for pagination.
+         */
+        @SerialName(KeyPerPage) val perPageOrNull: Int? = null,
+        /**
+         * The number of returned pages. Calculation is based on the total number of hits (nbHits) divided by the number of
+         * hits per page (hitsPerPage), rounded up to the nearest integer.
+         * Not returned if you use offset & length for pagination.
+         */
+        @SerialName(KeyNumPages) val numPagesOrNull: Int? = null,
+        /**
+         * An echo of the query text. See the [Query.query] search parameter.
+         */
+        @SerialName(KeyQuery) val queryOrNull: String? = null,
+        /**
+         * A url-encoded string of all [Query] parameters.
+         */
+        @SerialName(KeyParams) val paramsOrNull: String? = null,
+        /**
+         * The computed geo location.
+         * Only returned when [Query.location] or [Query.aroundLatLng] is set.
+         */
+        @SerialName(KeyAroundLatLng) @Serializable(KSerializerPoint::class) val aroundLatLngOrNull: Point? = null,
+        /**
+         * The automatically computed radius. For legacy reasons, this parameter is a string and not an integer.
+         * Only returned for geo queries without an explicitly specified [Query.aroundRadius].
+         */
+        @SerialName(KeyAutomaticRadius) val automaticRadiusOrNull: Float? = null
+    ) {
+        public val total: Int
+            get() = totalOrNull!!
+
+        public val page: Int
+            get() = pageOrNull!!
+
+        public val perPage: Int
+            get() = perPageOrNull!!
+
+        public val numPages: Int
+            get() = numPagesOrNull!!
+
+        public val query: String
+            get() = queryOrNull!!
+
+        public val params: String
+            get() = paramsOrNull!!
+
+        public val aroundLatLng: Point
+            get() = aroundLatLngOrNull!!
+
+        public val automaticRadius: Float
+            get() = automaticRadiusOrNull!!
     }
 
     /**

@@ -210,6 +210,7 @@ bintray {
         desc = "Clinia API Client for Kotlin lets you easily use the Clinia Search" +
                 "REST API from your JVM project, such as Android or backend implementations."
         repo = "maven"
+        userOrg = System.getenv("BINTRAY_ORG")
         name = Library.artifact
         websiteUrl = "https://www.clinia.ca/"
         issueTrackerUrl =  "https://github.com/clinia/cliniasearch-client-kotlin/issues"
