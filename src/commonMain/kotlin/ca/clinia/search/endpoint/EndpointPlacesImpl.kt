@@ -18,8 +18,6 @@ internal class EndpointPlacesImpl(
     private val transport: Transport
 ) : EndpointPlaces {
     override suspend fun searchPlaces(query: PlacesQuery, requestOptions: RequestOptions?): ResponseSearchPlaces {
-        val body = query.toBody()
-
         val options = requestOptions ?: RequestOptions()
 
         options.parameter(KeyInput, if (query.input != null) query.input else "")
@@ -34,6 +32,6 @@ internal class EndpointPlacesImpl(
             options.parameter(KeyCountry, query.country!!.joinToString(","))
         }
 
-        return transport.request(HttpMethod.Get, CallType.Read, "location/v1/autocomplete", options)
+        return transport.request(HttpMethod.Get, CallType.Read, "$RouteLocations/autocomplete", options)
     }
 }
