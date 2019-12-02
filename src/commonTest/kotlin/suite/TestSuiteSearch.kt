@@ -24,48 +24,48 @@ internal class TestSuiteSearch {
     private val search = clientSearch.initIndex(indexName)
     private val places = clientPlaces
 
-//    @Test
-//    fun singleIndex() {
-//        runBlocking {
-//            search.apply {
-//                try {
-//                    val responseSearch = search(Query(query = ""))
-//
-//                    responseSearch.meta.perPage shouldEqual 20
-//                    responseSearch.records.first()
-//                } catch (exception: ResponseException) {
-//                    val request = exception.response.call.request
-//                    val body = (request.content as TextContent).text
-//                    println(body)
-//
-//                    val content = exception.response.readText()
-//                    println(content)
-//                }
-//            }
-//        }
-//    }
-//
-//    @Test
-//    fun multiQueries() {
-//        runBlocking {
-//            val response = clientSearch.multipleQueries(
-//                listOf(
-//                    IndexQuery(indexName = IndexName("health_facility"), query = Query(query = "")),
-//                    IndexQuery(indexName = IndexName("professional"), query = Query(query = ""))
-//                )
-//            )
-//
-//            response.results.size shouldEqual 2
-//        }
-//    }
-//
-//    @Test
-//    fun places() {
-//        runBlocking {
-//            val response = places.searchPlaces(PlacesQuery("Lon", listOf(PlaceType.Place), listOf("CA"), 1))
-//            response.suggestions.size shouldEqual 1
-//        }
-//    }
+    @Test
+    fun singleIndex() {
+        runBlocking {
+            search.apply {
+                try {
+                    val responseSearch = search(Query(query = ""))
+
+                    responseSearch.meta.perPage shouldEqual 20
+                    responseSearch.records.first()
+                } catch (exception: ResponseException) {
+                    val request = exception.response.call.request
+                    val body = (request.content as TextContent).text
+                    println(body)
+
+                    val content = exception.response.readText()
+                    println(content)
+                }
+            }
+        }
+    }
+
+    @Test
+    fun multiQueries() {
+        runBlocking {
+            val response = clientSearch.multipleQueries(
+                listOf(
+                    IndexQuery(indexName = IndexName("health_facility"), query = Query(query = "")),
+                    IndexQuery(indexName = IndexName("professional"), query = Query(query = ""))
+                )
+            )
+
+            response.results.size shouldEqual 2
+        }
+    }
+
+    @Test
+    fun places() {
+        runBlocking {
+            val response = places.searchPlaces(PlacesQuery("Lon", listOf(PlaceType.Place), listOf("CA"), 1))
+            response.suggestions.size shouldEqual 1
+        }
+    }
 
     @Test
     fun suggest() {
