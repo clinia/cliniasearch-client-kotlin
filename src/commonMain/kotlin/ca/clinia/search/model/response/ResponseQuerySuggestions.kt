@@ -1,6 +1,5 @@
 package ca.clinia.search.model.response
 
-import ca.clinia.search.model.places.Place
 import ca.clinia.search.model.suggest.QuerySuggestion
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.StringDescriptor
@@ -18,12 +17,12 @@ public data class ResponseQuerySuggestions(
 
         override val descriptor = StringDescriptor.withName("ResponseQuerySuggestions")
 
-        override fun serialize(output: Encoder, obj: ResponseQuerySuggestions) {
-            QuerySuggestion.serializer().list.serialize(output, obj.suggestions)
+        override fun serialize(encoder: Encoder, obj: ResponseQuerySuggestions) {
+            QuerySuggestion.serializer().list.serialize(encoder, obj.suggestions)
         }
 
-        override fun deserialize(input: Decoder): ResponseQuerySuggestions {
-            return ResponseQuerySuggestions(QuerySuggestion.serializer().list.deserialize(input))
+        override fun deserialize(decoder: Decoder): ResponseQuerySuggestions {
+            return ResponseQuerySuggestions(QuerySuggestion.serializer().list.deserialize(decoder))
         }
     }
 }

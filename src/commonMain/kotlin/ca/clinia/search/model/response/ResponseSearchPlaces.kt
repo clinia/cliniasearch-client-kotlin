@@ -1,9 +1,6 @@
 package ca.clinia.search.model.response
 
-import ca.clinia.search.model.multipleindex.IndexQuery
 import ca.clinia.search.model.places.Place
-import ca.clinia.search.model.places.PlaceType
-import ca.clinia.search.serialize.KeyResults
 import kotlinx.serialization.*
 import kotlinx.serialization.internal.StringDescriptor
 
@@ -20,12 +17,12 @@ public data class ResponseSearchPlaces(
 
         override val descriptor = StringDescriptor.withName("ResponseSearchPlaces")
 
-        override fun serialize(output: Encoder, obj: ResponseSearchPlaces) {
-            Place.serializer().list.serialize(output, obj.suggestions)
+        override fun serialize(encoder: Encoder, obj: ResponseSearchPlaces) {
+            Place.serializer().list.serialize(encoder, obj.suggestions)
         }
 
-        override fun deserialize(input: Decoder): ResponseSearchPlaces {
-            return ResponseSearchPlaces(Place.serializer().list.deserialize(input))
+        override fun deserialize(decoder: Decoder): ResponseSearchPlaces {
+            return ResponseSearchPlaces(Place.serializer().list.deserialize(decoder))
         }
     }
 }
