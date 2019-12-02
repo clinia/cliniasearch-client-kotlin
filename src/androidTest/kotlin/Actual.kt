@@ -1,5 +1,7 @@
+import ca.clinia.search.client.ClientPlaces
 import ca.clinia.search.client.ClientSearch
 import ca.clinia.search.configuration.Compression
+import ca.clinia.search.configuration.ConfigurationPlaces
 import ca.clinia.search.configuration.ConfigurationSearch
 import ca.clinia.search.configuration.RetryableHost
 import ca.clinia.search.helper.toAPIKey
@@ -12,11 +14,12 @@ import kotlin.coroutines.CoroutineContext
 
 
 internal actual val clientSearch = ClientSearch(
-    configuration = ConfigurationSearch(
-        applicationID = System.getenv("CLINIA_APPLICATION_ID_1").toApplicationID(),
-        apiKey = System.getenv("CLINIA_SEARCH_KEY_1").toAPIKey(),
-        hosts = listOf(RetryableHost(url = "api.partner.staging.clinia.ca"))
-    )
+    System.getenv("CLINIA_APPLICATION_ID_1")!!.toApplicationID(),
+    System.getenv("CLINIA_SEARCH_KEY_1")!!.toAPIKey()
+)
+internal actual val clientPlaces = ClientPlaces(
+    System.getenv("CLINIA_APPLICATION_ID_1")!!.toApplicationID(),
+    System.getenv("CLINIA_PLACES_KEY_1")!!.toAPIKey()
 )
 internal actual val clientAdmin1 = ClientSearch(
     System.getenv("CLINIA_APPLICATION_ID_1")!!.toApplicationID(),

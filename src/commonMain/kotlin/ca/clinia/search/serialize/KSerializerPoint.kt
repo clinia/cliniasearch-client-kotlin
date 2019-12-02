@@ -15,7 +15,7 @@ public object KSerializerPoint : KSerializer<Point> {
     override val descriptor = serializer.descriptor
 
     override fun serialize(encoder: Encoder, obj: Point) {
-        serializer.serialize(encoder, "${obj.latitude},${obj.longitude}")
+        serializer.serialize(encoder, "${obj.lat},${obj.lng}")
     }
 
     override fun deserialize(decoder: Decoder): Point {

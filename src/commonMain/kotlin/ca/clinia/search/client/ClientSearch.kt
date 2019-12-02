@@ -15,6 +15,7 @@ public class ClientSearch private constructor(
     internal val transport: Transport
 ) :
     EndpointMultipleIndex by EndpointMultipleIndexImpl(transport),
+    EndpointSuggest by EndpointSuggestImpl(transport),
     Configuration by transport,
     Credentials by transport.credentials {
 
