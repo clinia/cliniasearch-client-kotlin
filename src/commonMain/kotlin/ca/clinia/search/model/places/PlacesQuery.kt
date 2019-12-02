@@ -11,20 +11,20 @@ data class PlacesQuery(
     /**
      * The query to match places by name
      */
-    @SerialName(KeyInput) var input: String? = null,
+    @SerialName(KeyQuery) var query: String? = null,
 
     /**
      * The type of places to look for
      */
-    @SerialName(KeyTypes) var types: List<PlaceType>? = null,
+    @SerialName(KeyTypes) var types: List<PlaceType>? = listOf(PlaceType.PostCode, PlaceType.Place, PlaceType.Neighborhood),
 
     /**
      * The preferred language in which to get the results in.
      */
-    @SerialName(KeyLocale) var country: List<String>? = null,
+    @SerialName(KeyCountry) var country: List<String>? = null,
 
     /**
      * The maximum number of results to return
      */
-    @SerialName(KeyLimit) var limit: Int? = 5
+    @SerialName(KeySize) var size: Int? = 5
 )

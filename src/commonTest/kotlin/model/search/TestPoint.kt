@@ -18,8 +18,7 @@ internal class TestPoint {
     fun point() {
         val point = Point(1f, 2f)
 
-        point.raw shouldEqual listOf(1f, 2f)
-        1f shouldEqual point.latitude
-        2f shouldEqual point.longitude
+        1f shouldEqual point.lat
+        2f shouldEqual point.lng
     }
 }

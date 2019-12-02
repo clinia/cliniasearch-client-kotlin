@@ -1,8 +1,6 @@
 package ca.clinia.search.model.places
 
 import ca.clinia.search.model.ID
-import ca.clinia.search.model.search.Point
-import ca.clinia.search.model.search.Query
 import ca.clinia.search.serialize.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -25,48 +23,48 @@ public data class Place(
     @SerialName(KeyCountryCode) val countryCodeOrNull: String? = null,
     @SerialName(KeyGeometry) val geometryOrNull: Geometry? = null
     ) {
-    public val Id: ID
+    public val id: ID
         get() = idOrNull!!
 
-    public val Type: PlaceType
+    public val type: PlaceType
         get() = typeOrNull!!
 
-    public val FormattedAddress: String
+    public val formattedAddress: String
         get() = formattedAddressOrNull!!
 
-    public val Suite: String
+    public val suite: String
         get() = suiteOrNull!!
 
-    public val Route: String
+    public val route: String
         get() = routeOrNull!!
 
-    public val PostalCode: String
+    public val postalCode: String
         get() = postalCodeOrNull!!
 
-    public val Neighborhood: String
+    public val neighborhood: String
         get() = neighborhoodOrNull!!
 
-    public val Locality: String
+    public val locality: String
         get() = localityOrNull!!
 
-    public val Place: String
+    public val place: String
         get() = placeOrNull!!
 
-    public val District: String
+    public val district: String
         get() = districtOrNull!!
 
-    public val Region: String
+    public val region: String
         get() = regionOrNull!!
 
-    public val RegionCode: String
+    public val regionCode: String
         get() = regionCodeOrNull!!
 
-    public val Country: String
+    public val country: String
         get() = countryOrNull!!
 
-    public val CountryCode: String
+    public val countryCode: String
         get() = countryCodeOrNull!!
 
-    public val Geometry: Geometry
+    public val geometry: Geometry
         get() = geometryOrNull!!
 }

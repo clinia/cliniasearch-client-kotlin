@@ -64,3 +64,7 @@ internal fun Query.toBody(): String {
 internal fun SuggestionQuery.toBody(): String {
     return JsonNoDefaults.stringify(SuggestionQuery.serializer(), this)
 }
+
+internal fun PlacesQuery.toBody(): String {
+    return JsonNoDefaults.stringify(PlacesQuery.serializer(), this)
+}

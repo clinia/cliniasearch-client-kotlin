@@ -62,7 +62,7 @@ internal class TestSuiteSearch {
     @Test
     fun places() {
         runBlocking {
-            val response = places.searchPlaces(PlacesQuery("Lon", listOf(PlaceType.Place), listOf("CA"), 1))
+            val response = places.searchPlaces(PlacesQuery("Lon", listOf(PlaceType.Place, PlaceType.PostCode), listOf("CA", "US"), 1))
             response.suggestions.size shouldEqual 1
         }
     }

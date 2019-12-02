@@ -14,7 +14,7 @@ public object KSerializerBoundingBox : KSerializer<BoundingBox> {
     override val descriptor = serializer.descriptor
 
     override fun serialize(encoder: Encoder, obj: BoundingBox) {
-        serializer.serialize(encoder, "${obj.point1.latitude},${obj.point1.longitude},${obj.point2.latitude},${obj.point2.longitude}")
+        serializer.serialize(encoder, "${obj.northEast.lat},${obj.northEast.lng},${obj.southWest.lat},${obj.southWest.lng}")
     }
 
     override fun deserialize(decoder: Decoder): BoundingBox {
