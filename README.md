@@ -91,7 +91,6 @@ Add this proguard rule to solve it.
 ### Guides
 
 - [Getting started](https://github.com/clinia/cliniasearch-client-kotlin/tree/master/docs/GettingStarted.md)
-- [DSL](https://github.com/clinia/cliniasearch-client-kotlin/tree/master/docs/DSL.md)
 - [Serialization](https://github.com/clinia/cliniasearch-client-kotlin/tree/master/docs/Serialization.md)
 - [ExceptionHandling](https://github.com/clinia/cliniasearch-client-kotlin/tree/master/docs/ExceptionHandling.md)
 - [Configure the HTTP client](https://github.com/clinia/cliniasearch-client-kotlin/tree/master/docs/HTTPClient.md)
