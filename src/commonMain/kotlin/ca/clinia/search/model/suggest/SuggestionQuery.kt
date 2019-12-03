@@ -12,20 +12,20 @@ class SuggestionQuery(
      * The text to search in the index.
      * Engine default: ""
      */
-    @SerialName(KeyQuery) val query: String? = null,
+    @SerialName(KeyQuery) var query: String? = null,
 
     /**
      * Tag to put at the start of the highlighted match.
      */
-    @SerialName(KeyHighlightPreTag) val highlightPreTag: String? = null,
+    @SerialName(KeyHighlightPreTag) var highlightPreTag: String? = null,
 
     /**
      * Tag to put at the end of the highlighted match.
      */
-    @SerialName(KeyHighlightPostTag) val highlightPostTag: String? = null,
+    @SerialName(KeyHighlightPostTag) var highlightPostTag: String? = null,
 
     /**
      * Set the maximum number of suggestion to receive.
      */
-    @SerialName(KeySize) val size: Int? = 5
+    @SerialName(KeySize) var size: Int? = 5
 )
