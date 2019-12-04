@@ -1,4 +1,15 @@
-## Features
+<div align="center">
+  <img src=".github/clinia-logo.svg" width="250">
+  <h1>Clinia Kotlin API Client</h1>
+  <h4>Thin & minimal low-level HTTP client to interact with Clinia's API</h4>
+  <a href="#features">Features</a> •
+  <a href="#getting-started">Getting Started</a> •
+  <a href="#api">API</a> •
+  <a href="#guides">Guides</a> •
+  <a href="#-license">License</a>
+</div>
+
+# Features
 
 - The Kotlin client is compatible with Kotlin `1.3.41` and higher.
 - It is compatible with Kotlin project on the JVM, such as backend and Android applications.
@@ -9,7 +20,7 @@
     - [Ktor](https://github.com/ktorio/ktor) HTTP client.
 - The client is thread-safe. You can use `SearchClient` in a multithreaded environment.
 
-## Getting Started
+# Getting Started
 
 Install the Kotlin client by adding the following dependency to your `gradle.build` file:
 
@@ -88,13 +99,17 @@ Add this proguard rule to solve it.
 -keep class ca.clinia.search.model.** { *; }
 ```
 
-### Guides
+# API
+
+- [Documentation](https://github.com/clinia/cliniasearch-client-kotlin/tree/master/docs/Api.md)
+
+# Guides
 
 - [Getting started](https://github.com/clinia/cliniasearch-client-kotlin/tree/master/docs/GettingStarted.md)
 - [Serialization](https://github.com/clinia/cliniasearch-client-kotlin/tree/master/docs/Serialization.md)
 - [ExceptionHandling](https://github.com/clinia/cliniasearch-client-kotlin/tree/master/docs/ExceptionHandling.md)
 - [Configure the HTTP client](https://github.com/clinia/cliniasearch-client-kotlin/tree/master/docs/HTTPClient.md)
 
-## 📄 License
+# 📄 License
 
 Clinia Kotlin API Client is an open-sourced software licensed under the [MIT license](LICENSE).
