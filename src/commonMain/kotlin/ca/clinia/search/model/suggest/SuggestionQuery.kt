@@ -9,7 +9,7 @@ import kotlinx.serialization.Serializable
 @DSLParameters
 class SuggestionQuery(
     /**
-     * The text to search in the index.
+     * The query to get suggestion for.
      * Engine default: ""
      */
     @SerialName(KeyQuery) var query: String? = null,
