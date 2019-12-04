@@ -32,7 +32,7 @@ Returns an instance of `ClientSearch`.
 Constructor
 
 #### Arguments
-- **configurationSearch (_ConfigurationSearch_)** -- The configuration object. 
+- **configurationSearch (_[ConfigurationSearch](#configurationsearch)_)** -- The configuration object. 
 
 #### Returns
 Returns an instance of `ClientSearch`. 
@@ -52,11 +52,11 @@ Returns an instance of `Index`.
 Get query suggestions based on a query.
 
 #### Arguments
-- **query (_SuggestionQuery_)** -- The query to get suggestions for.
+- **query (_[SuggestionQuery](#suggestionquery)_)** -- The query to get suggestions for.
 - **requestOptions (_RequestOptions_)** -- The options for this request.
 
 #### Returns
-Returns an instance of `ResponseQuerySuggestions`
+Returns an instance of [`ResponseQuerySuggestions`](#responsequerysuggestions)
 
 #### Example
 ```kotlin
@@ -70,11 +70,11 @@ val response = clientSearch.suggest(
 Triggers a multi-index search query.
 
 #### Arguments
-- **queries (_List\<IndexQuery\>_)** -- The search queries.
+- **queries (_List\<[IndexQuery](#indexquery)\>_)** -- The search queries.
 - **requestOptions (_RequestOptions_)** -- The options for this request.
 
 #### Returns
-Returns an instance of `ResponseSearches`
+Returns an instance of [`ResponseSearches`](#responsesearches)
 
 #### Example
 ```kotlin
@@ -99,10 +99,10 @@ var index = clientSearch.initIndex(indexName)
 Triggers a search query on the given index.
 
 #### Arguments
-- **query (_Query_)** -- The query
+- **query (_[Query](#query)_)** -- The query
 
 #### Returns
-Returns an instance of `ResponseSearch`
+Returns an instance of [`ResponseSearch`](#responsesearch)
 
 #### Example
 ```kotlin
@@ -143,7 +143,7 @@ Returns an instance of `ClientPlaces`.
 Constructor
 
 #### Arguments
-- **configurationPlaces (_ConfigurationPlaces_)** -- The configuration object. 
+- **configurationPlaces (_[ConfigurationPlaces](#configurationplaces)_)** -- The configuration object. 
 
 #### Returns
 Returns an instance of `ClientPlaces`.
@@ -153,15 +153,15 @@ Returns an instance of `ClientPlaces`.
 Get place suggestions based on a query.
 
 #### Arguments
-- **query (_PlacesQuery_)** -- The place query to get suggestions for. 
+- **query (_[PlacesQuery](#placesquery)_)** -- The place query to get suggestions for. 
 
 #### Returns
-Returns an instance of `ResponseSearchPlaces`.
+Returns an instance of [`ResponseSearchPlaces`](#responsesearchplaces).
 
 #### Example
 ```kotlin
-val response = clientSearch.suggest(
-    SuggestionQuery("sons")
+val response = places.searchPlaces(
+    PlacesQuery("query", listOf(PlaceType.Place, PlaceType.PostCode), listOf("CA", "US"))
 )
 ```
 
@@ -199,7 +199,7 @@ val response = clientSearch.suggest(
 | `aroundLatLng` | _Point?_ | Search for entries around a central geolocation, enabling a geo search within a circular area. |||
 | `aroundRadius` | _AroundRadius?_ | Define the maximum radius for a geo search (in meters). |||
 | `insideBoundingBox` | _BoundingBox?_ | Search inside a rectangular area (in geo coordinates). |||
-| `queryType` | _QueryType?_ | Controls if and how query words are interpreted as [prefixes]. | `QueryType.PrefixLast` | `QueryType.PrefixLast`<br/>`QueryType.PrefixNone` |
+| `queryType` | _QueryType?_ | Controls if and how query words are interpreted as prefixes. | `QueryType.PrefixLast` | `QueryType.PrefixLast`<br/>`QueryType.PrefixNone` |
 <br/>
 
 ### IndexQuery
@@ -234,11 +234,24 @@ val response = clientSearch.suggest(
 |------------|------|-------------|---------------|-----------------|
 | `records` | _List\<Record\>?_ | The hits returned by the search. Hits are ordered according to the ranking or sorting of the index being queried. Hits are made of the schemaless JSON objects that you stored in the index. |||
 | `meta` | _Meta?_ | Metadata of the query. |||
+<br/>
+
+### ResponseSearches
+| Field name | Type | Description | Default Value | Possible Values |
+|------------|------|-------------|---------------|-----------------|
+| `results` | _List\<ResponseSearch\>?_ | The responses. One for each index that was queried. |||
+<br/>
 
 ### ResponseQuerySuggestions
 | Field name | Type | Description | Default Value | Possible Values |
 |------------|------|-------------|---------------|-----------------|
 | `suggestions` | _List\<QuerySuggestion\>?_ | List of query suggestions |||
+<br/>
+
+### ResponseSearchPlaces
+| Field name | Type | Description | Default Value | Possible Values |
+|------------|------|-------------|---------------|-----------------|
+| `suggestions` | _List\<Place\>?_ | List of place suggestions. |||
 <br/>
 
 ### Metadata 
@@ -282,8 +295,6 @@ val response = clientSearch.suggest(
 | `countryCode` | _String?_ | ISO 3166 country code |||
 | `geometry` | _Geometry?_ | Geographical information of the location. |||
 <br/>
-
-
 
 ### Record (`health_facility`)
 | Field name | Type | Description | Default Value | Possible Values |
