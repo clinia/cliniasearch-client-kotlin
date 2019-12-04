@@ -70,7 +70,7 @@ val response = clientSearch.suggest(
 Triggers a multi-index search query.
 
 #### Arguments
-- **queries (_List<IndexQuery>_)** -- The search queries.
+- **queries (_List\<IndexQuery\>_)** -- The search queries.
 - **requestOptions (_RequestOptions_)** -- The options for this request.
 
 #### Returns
@@ -222,8 +222,8 @@ val response = clientSearch.suggest(
 | Field name | Type | Description | Default Value | Possible Values |
 |------------|------|-------------|---------------|-----------------|
 | `query` | _String?_ | The query to match places by name. |||
-| `types` | _List<PlaceType>?_ | The type of places to look for | `listOf(PlaceType.PostCode, PlaceType.Place, PlaceType.Neighborhood)` | `PlaceType.Country`<br/>`PlaceType.Region`<br/>`PlaceType.PostCode`<br/>`PlaceType.District`<br/>`PlaceType.Place`<br/>`PlaceType.Locality`<br/>`PlaceType.Neighborhood`<br/>`PlaceType.Poi`<br/>`PlaceType.Route` |
-| `country` | _List<String>?_ | The preferred language in which to get the results in. || (e.g. 'CA', 'US') |
+| `types` | _List\<PlaceType\>?_ | The type of places to look for | `listOf(PlaceType.PostCode, PlaceType.Place, PlaceType.Neighborhood)` | `PlaceType.Country`<br/>`PlaceType.Region`<br/>`PlaceType.PostCode`<br/>`PlaceType.District`<br/>`PlaceType.Place`<br/>`PlaceType.Locality`<br/>`PlaceType.Neighborhood`<br/>`PlaceType.Poi`<br/>`PlaceType.Route` |
+| `country` | _List\<String\>?_ | The preferred language in which to get the results in. || (e.g. 'CA', 'US') |
 | `locale` | _String?_ | The preferred language in which to get the results in. |||
 | `size` | _Int?_ | The maximum number of results to return. |||
 <br/>
@@ -232,13 +232,13 @@ val response = clientSearch.suggest(
 ### ResponseSearch
 | Field name | Type | Description | Default Value | Possible Values |
 |------------|------|-------------|---------------|-----------------|
-| `records` | _List<Record>?_ | The hits returned by the search. Hits are ordered according to the ranking or sorting of the index being queried. Hits are made of the schemaless JSON objects that you stored in the index. |||
+| `records` | _List\<Record\>?_ | The hits returned by the search. Hits are ordered according to the ranking or sorting of the index being queried. Hits are made of the schemaless JSON objects that you stored in the index. |||
 | `meta` | _Meta?_ | Metadata of the query. |||
 
 ### ResponseQuerySuggestions
 | Field name | Type | Description | Default Value | Possible Values |
 |------------|------|-------------|---------------|-----------------|
-| `suggestions` | _List<QuerySuggestion>?_ | List of query suggestions |||
+| `suggestions` | _List\<QuerySuggestion\>?_ | List of query suggestions |||
 <br/>
 
 ### Metadata 
@@ -291,13 +291,13 @@ val response = clientSearch.suggest(
 | `documentType` | _String?_ | Type of document. | `health_facility`||
 | `id` | _String?_ | Identifier of the resource. |||
 | `type` | _String?_ | Type of resource. |||
-| `address` | _Address_ | Address. |||
-| `geoPoint` | _GeoPoint_ | Coordinate of the resource, if applicable. |||
+| `address` | _Address?_ | Address. |||
+| `geoPoint` | _Point?_ | Coordinate of the resource, if applicable. |||
 | `onlineBookingUrl` | _String?_ | Online booking url. |||
-| `distance` | _Float_ | Distance (in meters) from the center of the location search parameter. |||
-| `openingHours` | _Map<String, List<Interval>>?_ | Opening hours. | The keys are strings from `1` to `7`.<br/>`1: Monday`<br/>`2: Tuesday`<br/>`3: Wednesday`<br/>`4: Thursday`<br/>`5: Friday`<br/>`6: Saturday`<br/>`7: Sunday` ||
+| `distance` | _Float?_ | Distance (in meters) from the center of the location search parameter. |||
+| `openingHours` | _Map<String, List\<Interval\>>?_ | Opening hours. | The keys are strings from `1` to `7`.<br/>`1: Monday`<br/>`2: Tuesday`<br/>`3: Wednesday`<br/>`4: Thursday`<br/>`5: Friday`<br/>`6: Saturday`<br/>`7: Sunday` ||
 | `name` | _String?_ | Name of the resource. |||
-| `phones` | _List<Phone>?_ | Name of the resource. |||
+| `phones` | _List\<Phone\>?_ | Name of the resource. |||
 | `owner` | _String?_ | Owner of the resource (mainly used internally) |||
 <br/>
 
@@ -309,7 +309,7 @@ val response = clientSearch.suggest(
 | `title` | _String?_ | Title of the resource | `MR`<br/>`MS`<br/>`DR`<br/>`DRE`<br/>||
 | `practiceNumber` | _String?_ | Practice number of the resource. |||
 | `name` | _String?_ | Name. |||
-| `phones` | _List<Phone>?_ | Phones. |||
+| `phones` | _List\<Phone\>?_ | Phones. |||
 | `owner` | _String?_ | Owner of the resource (mainly used internally) |||
 <br/>
 
