@@ -14,6 +14,15 @@ internal class EndpointPlacesImpl(
     override suspend fun searchPlaces(query: PlacesQuery, requestOptions: RequestOptions?): ResponseSearchPlaces {
         val body =  query.toBody()
 
-        return transport.request(HttpMethod.Post, CallType.Read, "$RouteLocation/autocomplete", body = body, requestOptions = null)
+        // Place locale in query param
+        var options = requestOptions
+        if (query.locale != null) {
+            if (options == null) {
+                options = RequestOptions()
+            }
+            options.parameter(KeyLocale, query.locale)
+        }
+
+        return transport.request(HttpMethod.Post, CallType.Read, "$RouteLocation/autocomplete", options, body)
     }
 }
