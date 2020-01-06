@@ -4,6 +4,8 @@ import ca.clinia.search.model.IndexName
 import ca.clinia.search.model.multipleindex.IndexQuery
 import ca.clinia.search.model.places.PlaceType
 import ca.clinia.search.model.places.PlacesQuery
+import ca.clinia.search.model.search.BoundingBox
+import ca.clinia.search.model.search.Point
 import ca.clinia.search.model.search.Query
 import ca.clinia.search.model.suggest.SuggestionQuery
 import clientPlaces
@@ -29,7 +31,7 @@ internal class TestSuiteSearch {
         runBlocking {
             search.apply {
                 try {
-                    val responseSearch = search(Query(query = ""))
+                    val responseSearch = search(Query(query = "", insideBoundingBox = BoundingBox(Point(48F, -66F), Point(40F, -70F))))
 
                     responseSearch.meta.perPage shouldEqual 20
                     responseSearch.records.first()
@@ -62,7 +64,7 @@ internal class TestSuiteSearch {
     @Test
     fun places() {
         runBlocking {
-            val response = places.searchPlaces(PlacesQuery("Lon", listOf(PlaceType.Place, PlaceType.PostCode), listOf("CA", "US"), 1))
+            val response = places.searchPlaces(PlacesQuery("Lon", listOf(PlaceType.Place, PlaceType.PostCode), listOf("CA", "US"), 1, "en"))
             response.suggestions.size shouldEqual 1
         }
     }
